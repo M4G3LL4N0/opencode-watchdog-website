@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #1a1712;
+  --paper: #f3ecdf;
+  --panel: #efe4d0;
+  --rule: #cbbfa8;
+  --hazard: #c2410c;
+  --safe: #3f6212;
+  --mute: #6d6458;
+}
+
+@theme inline {
+  --font-sans: var(--font-sans-face);
+  --font-mono: var(--font-mono-face);
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-sans), "Iowan Old Style", Palatino, serif;
+  background:
+    radial-gradient(1200px 500px at 80% -10%, color-mix(in srgb, var(--hazard) 12%, transparent), transparent 60%),
+    var(--paper);
+}
+
+a {
+  text-underline-offset: 0.18em;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--hazard);
+  outline-offset: 3px;
+}
+
+.trip-bar {
+  transform-origin: left center;
+  animation: trip 8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trip-bar {
+    animation: none;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes trip {
+  0%,
+  55% {
+    transform: scaleX(0);
+  }
+  70%,
+  100% {
+    transform: scaleX(1);
+  }
+}
